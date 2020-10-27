@@ -25,6 +25,17 @@ app.get('', (req, res) => {
     });
 });
 
+app.get('/products', (req, res) => {
+    if (!req.query.name) {
+        return res.send({
+            error: 'You must provide a name term'
+        })
+    }
+    res.send({
+        name: req.query.name
+    });
+});
+
 app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help',
